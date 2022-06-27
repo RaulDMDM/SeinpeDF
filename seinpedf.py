@@ -30,15 +30,27 @@ agregarPagina()
 ######PRUEBAS DE IMPORTACION Y ESCALADO DE IMAGENES###############
 
 archivoSalida = "pruebaImagenes.pdf" #Nombre archivo de salidaImagen a insertar
-
-imagenPrueba = open("D:\\DevelopProjects\\informeSeinpe\\ejemplo\\naranjito.png", 'rb').read() 
-
-imagenPosicion = fitz.IRect(0,0,50,50) #Posicion y tamaño de la imagen
-
 archivo = fitz.open("D:\\DevelopProjects\\informeSeinpe\\pruebaADD.pdf") #PDF en el que se insertara la imagen
 paginaInsercion = archivo[len(archivo) - 1] #Pagina en la que se insertara la imagen
 
-paginaInsercion.insert_image(imagenPosicion, stream = imagenPrueba) #Inserción de imagen
+imagenPrueba1 = open("D:\\DevelopProjects\\informeSeinpe\\ejemplo\\fotos\\20220131110852.jpg", 'rb').read()
+imagenPosicion1 = fitz.Rect(50,225,275,400)#posicion y tamaño de la imagen
+paginaInsercion.insert_image(imagenPosicion1, stream = imagenPrueba1, keep_proportion = False)#Inserción de imagen 1
+
+
+imagenPrueba2 = open("D:\\DevelopProjects\\informeSeinpe\\ejemplo\\fotos\\20220131110907.jpg", 'rb').read()
+imagenPosicion2 = fitz.Rect(320,225,545,400)#posicion y tamaño de la imagen
+paginaInsercion.insert_image(imagenPosicion2, stream = imagenPrueba2, keep_proportion = False)#Inserción de imagen 2
+
+
+imagenPrueba3 = open("D:\\DevelopProjects\\informeSeinpe\\ejemplo\\fotos\\20220131111139.jpg", 'rb').read()
+imagenPosicion3 = fitz.Rect(50,550,275,725)#posicion y tamaño de la imagen
+paginaInsercion.insert_image(imagenPosicion3, stream = imagenPrueba3, keep_proportion = False)#Inserción de imagen 2
+
+
+imagenPrueba4 = open("D:\\DevelopProjects\\informeSeinpe\\ejemplo\\fotos\\20220131111059.jpg", 'rb').read()
+imagenPosicion4 = fitz.Rect(320,550,545,725)#posicion y tamaño de la imagen
+paginaInsercion.insert_image(imagenPosicion4, stream = imagenPrueba4, keep_proportion = False)#Inserción de imagen 2
 
 archivo.save(archivoSalida)
 
