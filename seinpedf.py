@@ -1,22 +1,11 @@
-# from tika import parser
-from argparse import FileType
-import builtins
-from fileinput import close, filename
-from importlib.resources import path
-from tkinter import *
-from tkinter import Tk, ttk
-from tkinter import filedialog
-from tkinter.filedialog import askopenfilename
-from tkinter.messagebox import showinfo
-from fitz import fitz, Rect
+import tkinter
+from fitz import fitz
 from pathlib import Path
 from PyPDF2 import PdfFileReader
-import math
 
 def inicio():
     
-    Tk().withdraw() #|Cuadro de dialogo para especificar ruta del informe base
-    pdf_original = askopenfilename(title="Selecciona el informe Siebel", filetypes=[("PDF", "*.pdf")])
+    pdf_original = tkinter.askopenfilename(title="Selecciona el informe Siebel")
     pdf_peritacion = Path(Path.cwd(), "ejemplo/peritacionGT.pdf")
     pdf_plantilla = Path(Path.cwd(), "ejemplo/marcaDeAgua.pdf")
     pdf_aux = Path(Path.cwd(),"pdfAux.pdf")
@@ -164,8 +153,12 @@ def generaPdfConImgs(pdf_aux, list_imgs, list_tit, list_desc, paginas_img):
     # else:
 
     pdf_modificado.save(Path(Path.cwd(),"pruebaImagenes.pdf"))
- 
-inicio()
     
+raiz = tkinter.Tk
+raiz.geometry("900x600")
+
+inicio()
+
+raiz.mainloop()
 
 
