@@ -1,12 +1,7 @@
 import math
-from textwrap import fill
-from turtle import color
 from fitz import fitz
 from pathlib import Path
-from PyPDF2 import PdfFileReader, PdfFileWriter
-import io
-from reportlab.pdfgen import canvas
-from reportlab.lib.pagesizes import letter
+from PyPDF2 import PdfFileReader
 from tkinter.filedialog import askopenfilename
 import tkinter as tk
 
@@ -125,7 +120,7 @@ def generaPdfConImgs(pdf_aux, list_imgs, list_tit, list_desc, paginas_img, num_r
         elif posImg == 2:
             posicionXmin = 50
             posicionYmin = 550
-            posicionXmax = 275 
+            posicionXmax = 275
             posicionYmax = 725
             pdf_ultima_pagina.insert_textbox((50,445,275,625), list_tit[posTexto], align = 1, fontsize = 13, fontname = "hebo")
             pdf_ultima_pagina.insert_textbox((50,490,275,625), list_desc[posTexto], align = 1, fontsize = 10, fontname = "helv")
@@ -143,13 +138,13 @@ def generaPdfConImgs(pdf_aux, list_imgs, list_tit, list_desc, paginas_img, num_r
         posicion_img = fitz.Rect(int(posicionXmin),int(posicionYmin), int(posicionXmax), int(posicionYmax)) #Posicion y tamaño de la imagen
         pdf_ultima_pagina.insert_image(posicion_img, stream = imagen_a_cargar, keep_proportion = False) #Inserción de imagen
 
-    pdf_modificado.save(Path(Path.cwd(),"pruebaImagenes.pdf"))
+    pdf_modificado.save(Path(Path.cwd(),"docConImgs.pdf"))
     
-raiz = tk.Tk()
-raiz.geometry("900x600")
+# raiz = tk.Tk()
+# raiz.geometry("900x600")
 
 inicio()
 
-raiz.mainloop()
+# raiz.mainloop()
 
 
